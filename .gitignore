@@ -79,3 +79,9 @@ pvz_practice/Logs/
 pvz_practice/UserSettings/
 
 pvz_practice/Temp/
+
+.vscode/
+
+pvz_practice/.idea/
+
+pvz_practice/obj/
