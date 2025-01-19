@@ -47,12 +47,14 @@ public class Plant : MonoBehaviour
     {
         plantState = PlantState.Disable;
         GetComponent<Animator>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public void TransitionToEnable()
     {
         plantState = PlantState.Enable;
         GetComponent<Animator>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
     }
 }
 
