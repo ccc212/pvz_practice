@@ -12,9 +12,11 @@ public class Plant : MonoBehaviour
 {
     PlantState plantState = PlantState.Disable;
     public PlantType plantType = PlantType.SunFlower;
+    public int hp = 100;
 
     private void Start()
     {
+        // 初始化时，禁用植物
         TransitionToDisable();
     }
 
@@ -43,6 +45,7 @@ public class Plant : MonoBehaviour
 
     }
 
+    // 禁用
     public void TransitionToDisable()
     {
         plantState = PlantState.Disable;
@@ -50,11 +53,28 @@ public class Plant : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
     }
 
+    // 启用
     public void TransitionToEnable()
     {
         plantState = PlantState.Enable;
         GetComponent<Animator>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
+    }
+
+    // 受伤
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    // 死亡
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
 
