@@ -153,10 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantType: 1
-  shootDuration: 2
+  hp: 100
+  shootDuration: 1
   shootPointTransform: {fileID: 5345833728812639321}
-  peaBulletPrefab: {fileID: 0}
+  peaBulletPrefab: {fileID: 1177384808703774599, guid: bf85cdbd82fa11e4b8ba528f164f8ba6, type: 3}
   peaBulletSpeed: 5
+  damage: 10
 --- !u!61 &8398762864310937175
 BoxCollider2D:
   m_ObjectHideFlags: 0

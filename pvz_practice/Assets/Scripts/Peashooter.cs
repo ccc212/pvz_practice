@@ -7,7 +7,9 @@ public class Peashooter : Plant
     public Transform shootPointTransform;
     public PeaBullet peaBulletPrefab;
     public float peaBulletSpeed = 5;
+    public int damage = 20;
 
+    // 启用时才开始射击
     protected override void EnableUpdate()
     {
         shootTimer += Time.deltaTime;
@@ -18,10 +20,12 @@ public class Peashooter : Plant
         }
     }
 
+    // 射击
     void Shoot()
     {
         PeaBullet peaBullet = Instantiate(peaBulletPrefab, shootPointTransform.position, Quaternion.identity);
         peaBullet.SetSpeed(peaBulletSpeed);
+        peaBullet.SetDamage(damage);
     }
 }
-
+    

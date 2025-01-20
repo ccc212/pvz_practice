@@ -22,10 +22,16 @@ public class Zombie : MonoBehaviour
 
     private Plant targetPlant;
 
+    public int hp = 100;
+    private int currentHp;
+    public GameObject zombieHeadPrefab;
+    private bool hasDroppedHead = false;
+
     void Start()
     {
         rgd = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        currentHp = hp;
     }
 
     void Update()
@@ -96,4 +102,34 @@ public class Zombie : MonoBehaviour
         zombieState = ZombieState.Attack;
         attackTimer = 0; // 重置攻击计时器，以确保下次碰到植物后重新开始计时
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (currentHp <= 0) return;
+
+        currentHp -= damage;
+        if (currentHp <= 0)
+        {
+            currentHp = -1;
+            Die();
+        }
+        float hpPercentage = (float)currentHp / hp;
+        anim.SetFloat("HpPercent", hpPercentage);
+
+        if (hpPercentage <= 0.3 && !hasDroppedHead)
+        {
+            hasDroppedHead = true;
+            GameObject zombieHead = Instantiate(zombieHeadPrefab, transform.position, Quaternion.identity);
+            Destroy(zombieHead, 2); // 2秒后销毁掉落的头
+            hasDroppedHead = true;
+        }
+    }
+
+    void Die()
+    {
+        zombieState = ZombieState.Die;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(gameObject, 2); // 2秒后销毁
+    }
 }
+
