@@ -125,7 +125,7 @@ MonoBehaviour:
   attackDamage: 10
   attackDuration: 2
   hp: 100
-  zombieHeadPrefab: {fileID: 0}
+  zombieHeadPrefab: {fileID: 8462394282751652132, guid: 7e1e4515c82438b45bc0e0b6824a99bb, type: 3}
 --- !u!61 &4269120417197033867
 BoxCollider2D:
   m_ObjectHideFlags: 0

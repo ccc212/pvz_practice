@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 enum CardState
 {
+    Disabled, // 不可用
     Cooling, // 冷却
     WaitingSun, // 等待阳光
     Ready // 可用
@@ -19,7 +20,7 @@ public enum PlantType
 public class Card : MonoBehaviour
 {
     // 冷却 等待阳光 可用
-    private CardState cardState = CardState.Cooling;
+    private CardState cardState = CardState.Disabled;
     public PlantType plantType = PlantType.SunFlower;
 
     public GameObject cardLight; // 可用
@@ -103,6 +104,16 @@ public class Card : MonoBehaviour
         cardLight.SetActive(false);
         cardGray.SetActive(true);
         cardMask.gameObject.SetActive(true);
+    }
+
+    public void DisableCard()
+    {
+        cardState = CardState.Disabled;
+    }
+
+    public void EnableCard()
+    {
+        TransitionToCooling();
     }
 
     public void OnClick()

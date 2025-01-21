@@ -118,7 +118,6 @@ public class Zombie : MonoBehaviour
 
         if (hpPercentage <= 0.3 && !hasDroppedHead)
         {
-            hasDroppedHead = true;
             GameObject zombieHead = Instantiate(zombieHeadPrefab, transform.position, Quaternion.identity);
             Destroy(zombieHead, 2); // 2秒后销毁掉落的头
             hasDroppedHead = true;
